@@ -7,6 +7,7 @@ export const fetchAllPosts = async () => {
         response = res
     }).catch(err => {
         console.log("err", err);
+        response = err
     })
     return response
 }

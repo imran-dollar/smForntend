@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 const authToken = localStorage.getItem('authToken');
+console.log("authToken", authToken);
 const headers = {
     Authorization: `Bearer ${JSON.parse(authToken)}`,
     accept: "application/json",
@@ -24,7 +25,8 @@ axiosInstence.interceptors.response.use(
             });
         }
         if (error.response.status === 401 || error.response.status === 403) {
-            localStorage.clear()
+            console.log(`${error.response.status} status clear Local Stroage`);
+            // localStorage.clear()
             // coffeewebClearLocal();
             // SuiteLocalStorage.deleteAll();
             // window.location.replace( RouteStrings.login)
@@ -48,11 +50,10 @@ axiosInstence.interceptors.request.use(
             });
         }
         if (error.request.status === 401 || error.response.status === 403) {
-            // window.location.reload()
-            // coffeewebClearLocal();
-            localStorage.clear()
-            // SuiteLocalStorage.deleteAll();
-            // window.location.replace(RouteStrings.accessdenied)
+            console.log(`${error.response.status} status clear Local Stroage`);
+
+            // localStorage.clear()
+
         } else {
             return new Promise((resolve, reject) => {
                 reject(error);

@@ -4,6 +4,8 @@ import { AuthRegisterService } from '../../Services/AuthService';
 import { useNavigate } from "react-router-dom";
 import './style.css'
 import { RouteStrings } from '../../routes/RouteStrings';
+import PasswordInput from '../../components/GlobalComponents/PasswordInput';
+import Swal from 'sweetalert2';
 const Register = () => {
     const Navigate = useNavigate();
     const [registerData, setregisterData] = useState({
@@ -64,9 +66,22 @@ const Register = () => {
 
     }
     const handle_submit = async () => {
-        const res = await AuthRegisterService(registerData);
+        const { newPassword, confirmPassword, ...rest } = registerData
+        const res = await AuthRegisterService({ ...rest, 'password': confirmPassword });
         if (res?.statusCode === 200) {
             Navigate(`${RouteStrings.otp}/:${registerData.email}`)
+        } else if (res?.statusCode == 401) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: res?.msg,
+            })
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: "Something went wrong !..",
+            })
         }
 
     }
@@ -135,11 +150,31 @@ const Register = () => {
                             id="email"
                             placeholder='johndoe@gmail.com' />
                     </div>
-                    {error.fullName && <p class="mx-2 w-auto  form-text text-capitalize text-danger">
+                    {error.email && <p class="mx-2 w-auto  form-text text-capitalize text-danger">
                         please Correct email
                     </p>}
                 </div>
-                <div className="form-group row">
+                <PasswordInput
+                    errMsg='Please Enter  password'
+                    OnChange={handleFormData_change}
+                    OnBlur={handle_blur}
+                    Val={registerData.newPassword}
+                    name="newPassword"
+                    id="newPassword"
+                    placeholder='Password'
+                    label='New Password'
+                />
+                <PasswordInput
+                    label='Confirm Password'
+                    errMsg='Password might be Empty or worng'
+                    OnChange={handleFormData_change}
+                    OnBlur={handle_blur}
+                    Val={registerData.confirmPassword}
+                    name="confirmPassword"
+                    id="confirmPassword"
+                    placeholder='confirm password'
+                />
+                {/* <div className="form-group row">
                     <label htmlFor="newPassword" className="col-sm-1-12 col-form-label" >
                         Password
                     </label>
@@ -157,8 +192,8 @@ const Register = () => {
                     {error.fullName && <p class="mx-2 w-auto  form-text text-capitalize text-danger">
                         please Enter Password
                     </p>}
-                </div>
-                <div className="form-group row">
+                </div> */}
+                {/* <div className="form-group row">
                     <label htmlFor="confirmPassword" className="col-sm-1-12 col-form-label" >
                         Confirm Password
                     </label>
@@ -176,16 +211,14 @@ const Register = () => {
                     {error.fullName && <p class="mx-2 w-auto  form-text text-capitalize text-danger">
                         Password might be Empty or worng
                     </p>}
-                </div>
+                </div> */}
                 <hr />
                 <div className="form-group row text-center  ">
                     <div className="col-sm-1-12   ">
                         <button onClick={handle_submit} className="btn w-100 tint-bg tint-border text-light ">Register</button>
                     </div>
                 </div>
-
             </div>
-
         </>
     )
 }

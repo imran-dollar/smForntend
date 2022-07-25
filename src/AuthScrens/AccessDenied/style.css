@@ -1,0 +1,10 @@
+.accessDenied{
+width: 100vw;
+height: 100vh;
+
+}
+.accessDenied-img-top{
+    margin: 3rem 1rem;
+    width: 25rem;
+    height: auto;
+}

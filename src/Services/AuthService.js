@@ -5,9 +5,8 @@ export const AuthLoginService = async (data) => {
         console.log("no conncection Found");
     }
     let resp;
-    await axios.post(URL + 'login', data).then(res => {
-        localStorage.setItem("userdata", JSON.stringify(res.data?.userdata));
-        localStorage.setItem("authToken", JSON.stringify(res.data?.token));
+    await axios.post(URL + 'auth/login', data).then(res => {
+
         resp = res.data
     }).catch(err => {
         console.log("err", err);
@@ -30,6 +29,7 @@ export const AuthVerifyOtpService = async (data) => {
         resp = res.data
     }).catch(err => {
         console.log("err", err);
+        resp = err.response
     })
     return resp
 }
@@ -38,7 +38,27 @@ export const AuthResendOtpService = async (data) => {
     await axios.post(URL + 'auth/resend_otp', data).then(res => {
         resp = res.data
     }).catch(err => {
-        console.log("err", err);
+        console.log("err", err); resp = err.response
+    })
+    return resp
+}
+export const AuthforgotPasswordService = async (data) => {
+    let resp;
+    await axios.post(URL + 'auth/forgotpassword', data).then(res => {
+        resp = res.data
+    }).catch(err => {
+        console.log("Imran,", err);
+        resp = err.response
+    })
+    return resp
+}
+export const AuthResetPasswordService = async (data) => {
+    let resp;
+    await axios.post(URL + 'auth/reset_password', data).then(res => {
+        resp = res.data
+    }).catch(err => {
+        console.log("Imran,", err);
+        resp = err.response
     })
     return resp
 }

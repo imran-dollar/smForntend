@@ -1,0 +1,18 @@
+.eye-img{
+position: absolute;
+    top: 0;
+    width: auto;
+    height: 1.5rem;
+    right: 2rem;
+    transform: translateY(0.8rem);
+}
+
+.btn-img{
+    width: fit-content;
+    height: auto;
+    background: transparent;
+    padding: unset;
+    margin: unset;
+    border: unset;
+    cursor: pointer;
+}

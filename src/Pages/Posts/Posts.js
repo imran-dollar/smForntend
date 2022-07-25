@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import AddPost from "../../components/AddPost";
 import PostCard from "../../components/PostCard";
+import ProfileCard from "../../components/ProfileCard";
 import { fetchAllPosts } from "../../Services";
 import "./style.css";
 const Posts = () => {
@@ -17,8 +18,10 @@ const Posts = () => {
     return (
         <>
             <div className=" row mx-2">
-                <div className="col-md-5"></div>
-                <div className="col-md-4 border border-danger d-flex flex-row flex-wrap">
+                <div className="col-md-3">
+                    <ProfileCard />
+                </div>
+                <div className="col-md-9 border border-danger d-flex flex-row flex-wrap">
                     {
                         AllPosts.map((item, index) => {
                             return (
@@ -28,9 +31,9 @@ const Posts = () => {
                     }
 
                 </div>
-                <div className=" addForm  col-md-3 ">
+                {/* <div className=" addForm  col-md-3 ">
                     <AddPost />
-                </div>
+                </div> */}
             </div>
 
         </>
