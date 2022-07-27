@@ -14,9 +14,7 @@ import { RouteStrings } from './routes/RouteStrings';
 const App = () => {
   return (
     <>
-      {/* <NavBar />
-      <Posts /> */}
-      {/* <Pages /> */}
+
       <Routes>
         <Route path={RouteStrings.login} element={<Login />} />
         <Route path={RouteStrings.register} element={<Register />} />
