@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Modal } from "react-bootstrap";
 import AddPost from "../../components/AddPost";
 import PostCard from "../../components/PostCard";
 import ProfileCard from "../../components/ProfileCard";
@@ -21,7 +22,10 @@ const Posts = () => {
                 <div className="col-md-3">
                     <ProfileCard />
                 </div>
-                <div className="col-md-9 border border-danger d-flex flex-row flex-wrap">
+                <Modal show={false}>
+                    <AddPost />
+                </Modal>
+                <div className="col-md-9  d-flex flex-row flex-wrap">
                     {
                         AllPosts.map((item, index) => {
                             return (

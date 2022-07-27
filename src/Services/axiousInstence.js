@@ -26,7 +26,7 @@ axiosInstence.interceptors.response.use(
         }
         if (error.response.status === 401 || error.response.status === 403) {
             console.log(`${error.response.status} status clear Local Stroage`);
-            // localStorage.clear()
+            localStorage.clear()
             // coffeewebClearLocal();
             // SuiteLocalStorage.deleteAll();
             // window.location.replace( RouteStrings.login)
@@ -51,9 +51,7 @@ axiosInstence.interceptors.request.use(
         }
         if (error.request.status === 401 || error.response.status === 403) {
             console.log(`${error.response.status} status clear Local Stroage`);
-
-            // localStorage.clear()
-
+            localStorage.clear()
         } else {
             return new Promise((resolve, reject) => {
                 reject(error);

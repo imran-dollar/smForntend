@@ -6,7 +6,6 @@ export const AuthLoginService = async (data) => {
     }
     let resp;
     await axios.post(URL + 'auth/login', data).then(res => {
-
         resp = res.data
     }).catch(err => {
         console.log("err", err);

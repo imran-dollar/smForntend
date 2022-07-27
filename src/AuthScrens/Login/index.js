@@ -5,6 +5,7 @@ import { Modal } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 import Loader from '../../components/Loader'
 import PasswordInput from '../../components/GlobalComponents/PasswordInput'
+import { RouteStrings } from '../../routes/RouteStrings'
 const Login = () => {
     const navigate = useNavigate()
     const [isloading, setisloading] = useState(false);
@@ -23,7 +24,7 @@ const Login = () => {
         if (res?.statusCode == 200) {
             localStorage.setItem("authToken", JSON.stringify(res?.token));
             localStorage.setItem("userdata", JSON.stringify(res?.userdata));
-            navigate('/posts')
+            window.location.replace(RouteStrings.posts)
         }
         setisloading(false);
     }

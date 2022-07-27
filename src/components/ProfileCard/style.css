@@ -47,3 +47,28 @@ border: solid 7px #fff;
     font-size: 22px;
     font-weight: 600;
 }
+.horizontal_line{
+    margin-top: 6rem;
+    background-color: #949494;
+}
+.profile_card_body{
+    display: flex;
+    flex-direction: column;
+}.number_details{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 1rem 0;
+}
+.numbers{
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.subtext{
+    color: #949494;
+    margin: unset;
+}
