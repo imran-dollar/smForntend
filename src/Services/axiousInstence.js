@@ -9,7 +9,7 @@ const headers = {
     "content-type": "application/json",
 };
 const axiosInstence = axios.create({
-    baseURL: process.env.REACT_APP_BASE_URL,
+    baseURL: process.env.REACT_APP_API_BASE_URL,
     headers: headers,
 });
 

@@ -1,6 +1,6 @@
 import axiosInstence from "./axiousInstence";
 
-const URL = "http://localhost:4000/posts/"
+const URL = "/posts"
 export const fetchAllPosts = async () => {
     let response;
     await axiosInstence.get(URL).then(res => {
