@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Images } from '../../assets/images'
 import { AuthRegisterService } from '../../Services/AuthService';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import './style.css'
 import { RouteStrings } from '../../routes/RouteStrings';
 import PasswordInput from '../../components/GlobalComponents/PasswordInput';
@@ -87,7 +87,7 @@ const Register = () => {
     }
     return (
         <>
-            <div className="container pt-5 pb-2 border-10 register-container tint-border ">
+            <div className="container pt-3 pb-2 border-10 register-container tint-border ">
                 <h4 className="text-center">Register</h4>
                 <div className=" d-flex justify-content-center ">
                     <div className="form-group row d-flex flex-column align-items-center">
@@ -174,48 +174,16 @@ const Register = () => {
                     id="confirmPassword"
                     placeholder='confirm password'
                 />
-                {/* <div className="form-group row">
-                    <label htmlFor="newPassword" className="col-sm-1-12 col-form-label" >
-                        Password
-                    </label>
-                    <div className="col-sm-1-12">
-                        <input autoComplete='off' type="password"
-                            required
-                            value={registerData.newPassword}
-                            onChange={handleFormData_change}
-                            onBlur={handle_blur}
-                            className="form-control form-control-focus"
-                            name="newPassword"
-                            id="newPassword"
-                            placeholder='Password' />
-                    </div>
-                    {error.fullName && <p class="mx-2 w-auto  form-text text-capitalize text-danger">
-                        please Enter Password
-                    </p>}
-                </div> */}
-                {/* <div className="form-group row">
-                    <label htmlFor="confirmPassword" className="col-sm-1-12 col-form-label" >
-                        Confirm Password
-                    </label>
-                    <div className="col-sm-1-12">
-                        <input autoComplete='off' type="password"
-                            required
-                            value={registerData.confirmPassword}
-                            onChange={handleFormData_change}
-                            onBlur={handle_blur}
-                            className="form-control form-control-focus"
-                            name="confirmPassword"
-                            id="confirmPassword"
-                            placeholder='confirm password' />
-                    </div>
-                    {error.fullName && <p class="mx-2 w-auto  form-text text-capitalize text-danger">
-                        Password might be Empty or worng
-                    </p>}
-                </div> */}
+
                 <hr />
                 <div className="form-group row text-center  ">
                     <div className="col-sm-1-12   ">
                         <button onClick={handle_submit} className="btn w-100 tint-bg tint-border text-light ">Register</button>
+                    </div>
+                    <div className="info-text mt-2 text-center">
+                        <p className="text-center"> Already Have Account ? <Link to={RouteStrings.login} className=" mx-1 text-center tint-color">
+                            Login
+                        </Link></p>
                     </div>
                 </div>
             </div>

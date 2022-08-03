@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import './style.css'
 import { AuthLoginService } from '../../Services/AuthService'
 import { Modal } from 'react-bootstrap'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import Loader from '../../components/Loader'
 import PasswordInput from '../../components/GlobalComponents/PasswordInput'
 import { RouteStrings } from '../../routes/RouteStrings'
@@ -87,6 +87,11 @@ const Login = () => {
                     name="password"
                     id="password"
                     placeholder='Password' />
+                <div className="info-text mt-2 text-center">
+                    <Link to={RouteStrings.forgotpassword} className="text-center tint-color">
+                        Forgot Password
+                    </Link>
+                </div>
                 <hr />
                 <div className="form-group row text-center  ">
                     <div className="col-sm-1-12   ">
@@ -94,6 +99,11 @@ const Login = () => {
                             className="btn w-100 tint-bg tint-border text-light">
                             Login
                         </button>
+                    </div>
+                    <div className="info-text mt-2 text-center">
+                        <p className="text-center"> Dont Have Account<Link to={RouteStrings.register} className=" mx-1 text-center tint-color">
+                            Register
+                        </Link></p>
                     </div>
                 </div>
             </div>
